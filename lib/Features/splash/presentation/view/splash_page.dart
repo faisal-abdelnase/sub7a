@@ -27,11 +27,19 @@ class _SplashPageState extends State<SplashPage> {
     return const Scaffold(
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("سبحان الله العظيم"),
-            Text("سبحان الله و بحمده"),
+            Text("سبحان الله العظيم", 
+            style: TextStyle(
+              fontSize: 24
+            ),),
+            Text("سبحان الله و بحمده", 
+            style: TextStyle(
+              fontSize: 24
+            ),),
           ],
-        ),),
+        ),
+      ),
     );
   }
 }
