@@ -24,8 +24,14 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(),
+    return const Scaffold(
+      body: Center(
+        child: Column(
+          children: [
+            Text("سبحان الله العظيم"),
+            Text("سبحان الله و بحمده"),
+          ],
+        ),),
     );
   }
 }
