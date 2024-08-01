@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:sub7a/Features/sub7a/presentation/view/home_page.dart';
 
@@ -10,7 +11,11 @@ class SplashPage extends StatefulWidget {
   State<SplashPage> createState() => _SplashPageState();
 }
 
-class _SplashPageState extends State<SplashPage> {
+class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateMixin {
+
+  AnimationController? _controller;
+  Animation<double>? _animation;
+  AudioPlayer _audioPlayer = AudioPlayer();
 
   @override
   void initState() {
