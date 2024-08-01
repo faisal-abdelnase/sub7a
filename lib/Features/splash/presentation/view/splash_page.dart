@@ -20,6 +20,20 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
   @override
   void initState() {
     super.initState();
+
+
+    _controller = AnimationController(
+      duration: Duration(seconds: 2),
+      vsync: this,
+    );
+
+    _animation = CurvedAnimation(parent: _controller!, curve: Curves.easeIn);
+
+    _controller?.forward();
+
+    _playSound();
+
+
     Timer(const Duration(seconds: 5), () {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (context) => const HomePage ()),
@@ -27,34 +41,50 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
     });
   }
 
+
+  void _playSound() async {
+    await _audioPlayer.play(AssetSource('assets/sound.mp3'));
+  }
+
+
+  @override
+  void dispose() {
+    _controller?.dispose();
+    _audioPlayer.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Color(0xffB1001C),
+    return Scaffold(
+      backgroundColor: const Color(0xffB1001C),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-
-            CircleAvatar(
-              radius: 100,
-              backgroundImage: AssetImage('asset/image/sub7ati.jpg')),
-
-              SizedBox(
-                height: 20,
-              ),
-
-            Text("سبحان الله العظيم", 
-            style: TextStyle(
-              fontSize: 24,
-              color: Colors.blue
-            ),),
-            Text("سبحان الله و بحمده", 
-            style: TextStyle(
-              fontSize: 24,
-              color: Colors.blue
-            ),),
-          ],
+        child: FadeTransition(
+          opacity: _animation!,
+          child: const Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+          
+              CircleAvatar(
+                radius: 100,
+                backgroundImage: AssetImage('asset/image/sub7ati.jpg')),
+          
+                SizedBox(
+                  height: 20,
+                ),
+          
+              Text("سبحان الله العظيم", 
+              style: TextStyle(
+                fontSize: 24,
+                color: Colors.blue
+              ),),
+              Text("سبحان الله و بحمده", 
+              style: TextStyle(
+                fontSize: 24,
+                color: Colors.blue
+              ),),
+            ],
+          ),
         ),
       ),
     );
