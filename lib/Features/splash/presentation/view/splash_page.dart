@@ -2,7 +2,8 @@ import 'dart:async';
 
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:sub7a/Features/sub7a/presentation/view/home_page.dart';
+import 'package:sub7a/Features/count/presentation/view/count_page.dart';
+
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -36,7 +37,7 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
 
     Timer(const Duration(seconds: 3), () {
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => const HomePage ()),
+        MaterialPageRoute(builder: (context) => const CountPage ()),
       );
     });
   }
