@@ -3,8 +3,10 @@ import 'package:sub7a/core/utils/colors.dart';
 
 class CustomIcon extends StatelessWidget {
   const CustomIcon({
-    super.key,
+    super.key, required this.iconData,
   });
+
+  final IconData iconData;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,7 @@ class CustomIcon extends StatelessWidget {
           color: Colors.white,
           borderRadius: BorderRadius.circular(40)
         ),
-        child: Icon(Icons.add,
+        child: Icon(iconData,
         color: red,
         size: 20,
         ),

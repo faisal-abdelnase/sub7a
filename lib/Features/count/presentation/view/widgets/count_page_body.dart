@@ -23,8 +23,25 @@ class CountPageBody extends StatelessWidget {
           ),),
 
           Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              CustomIcon()
+              CustomIcon(iconData: Icons.add,),
+
+              SizedBox(
+                width: 15,
+              ),
+
+              Text("33", 
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 24
+              ),),
+
+              SizedBox(
+                width: 15,
+              ),
+
+              CustomIcon(iconData: Icons.remove,),
             ],
           )
         ],
