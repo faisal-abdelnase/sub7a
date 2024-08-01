@@ -23,7 +23,7 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
 
 
     _controller = AnimationController(
-      duration: Duration(seconds: 2),
+      duration:  Duration(seconds: 3),
       vsync: this,
     );
 
@@ -34,7 +34,7 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
     _playSound();
 
 
-    Timer(const Duration(seconds: 5), () {
+    Timer(const Duration(seconds: 3), () {
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (context) => const HomePage ()),
       );
@@ -43,7 +43,7 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
 
 
   void _playSound() async {
-    await _audioPlayer.play(AssetSource('assets/sound.mp3'));
+    await _audioPlayer.play(AssetSource('Audio/نغمة للجوال - صلي على محمد ﷺ.mp3'));
   }
 
 
