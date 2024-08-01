@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sub7a/Features/count/presentation/view/widgets/custom_button.dart';
 import 'package:sub7a/Features/count/presentation/view/widgets/custom_icon.dart';
 import 'package:sub7a/core/utils/colors.dart';
 
@@ -13,7 +14,7 @@ class CountPageBody extends StatelessWidget {
       decoration: BoxDecoration(
         color: red
       ),
-      child: const  Column(
+      child: const Column(
         children: [
           
           Text("الهدف", 
@@ -22,7 +23,11 @@ class CountPageBody extends StatelessWidget {
             fontSize: 32
           ),),
 
-          Row(
+          SizedBox(
+                height: 15,
+              ),
+
+          const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               CustomIcon(iconData: Icons.add,),
@@ -43,10 +48,27 @@ class CountPageBody extends StatelessWidget {
 
               CustomIcon(iconData: Icons.remove,),
             ],
+          ),
+
+          SizedBox(
+                height: 20,
+              ),
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              CustomButton(score: "1000+",),
+              CustomButton(score: "100+",),
+              CustomButton(score: "100",),
+              CustomButton(score: "33",),
+              CustomButton(score: "0",),
+            ],
           )
         ],
       ),
     );
   }
 }
+
+
 
