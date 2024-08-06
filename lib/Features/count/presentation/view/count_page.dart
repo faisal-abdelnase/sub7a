@@ -21,6 +21,22 @@ class CountPage extends StatelessWidget {
         
       ),
 
+
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(left: 24),
+        child: Align(
+          alignment: Alignment.bottomLeft,
+          child: FloatingActionButton(
+            backgroundColor: red,
+            onPressed: () {},
+            child: const Icon(
+              Icons.refresh,
+              color: Colors.white,
+              ),
+            ),
+        ),
+      ) ,
+
       body: const CountPageBody(),
     );
   }
