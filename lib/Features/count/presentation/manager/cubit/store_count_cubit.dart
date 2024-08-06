@@ -9,6 +9,8 @@ class StoreCountCubit extends Cubit<StoreCountState> {
   StoreCountCubit() : super(StoreCountInitial());
 
   Color currentColor = red;
-  int score = 0;
+  int score = 33;
   int count = 0;
+  int totalCounter = 0;
+  int numberOfCounter = 0;
 }

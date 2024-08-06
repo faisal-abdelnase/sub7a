@@ -3,9 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sub7a/Features/count/presentation/manager/cubit/store_count_cubit.dart';
 import 'package:sub7a/Features/count/presentation/view/widgets/count_page_body.dart';
 
-class CountPage extends StatelessWidget {
+class CountPage extends StatefulWidget {
   const CountPage({super.key});
 
+  @override
+  State<CountPage> createState() => _CountPageState();
+}
+
+class _CountPageState extends State<CountPage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -30,7 +35,14 @@ class CountPage extends StatelessWidget {
                 child: FloatingActionButton(
                   backgroundColor:
                       BlocProvider.of<StoreCountCubit>(context).currentColor,
-                  onPressed: () {},
+                  onPressed: () {
+                    BlocProvider.of<StoreCountCubit>(context).totalCounter = 0;
+                    BlocProvider.of<StoreCountCubit>(context).numberOfCounter = 0;
+                    BlocProvider.of<StoreCountCubit>(context).count = 0;
+                    setState(() {
+                      
+                    });
+                  },
                   child: const Icon(
                     Icons.refresh,
                     color: Colors.white,

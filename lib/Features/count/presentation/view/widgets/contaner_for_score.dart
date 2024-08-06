@@ -47,7 +47,7 @@ class _ContanerForScoreState extends State<ContanerForScore> {
                 iconData: Icons.add_circle, 
                 onPressed: () {
                   score++;
-                  print('------------------------$score--------------');
+                  
                   setState(() {
                     BlocProvider.of<StoreCountCubit>(context).score = score;
                     BlocProvider.of<StoreCountCubit>(context).count = 0;

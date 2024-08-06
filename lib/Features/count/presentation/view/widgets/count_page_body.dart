@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sub7a/Features/count/presentation/manager/cubit/store_count_cubit.dart';
 import 'package:sub7a/Features/count/presentation/view/widgets/contaner_for_score.dart';
 import 'package:sub7a/Features/count/presentation/view/widgets/custom_circular_percent_indicator.dart';
 import 'package:sub7a/core/utils/colors.dart';
@@ -14,6 +16,7 @@ class CountPageBody extends StatefulWidget {
 class _CountPageBodyState extends State<CountPageBody> {
 
   Color curentColor = red;
+  int count = 0;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -35,8 +38,35 @@ class _CountPageBodyState extends State<CountPageBody> {
         
         
         
-        
-              CustomCircularPercentIndicator(currentColor: curentColor,),
+              CustomCircularPercentIndicator(
+                onPressed: () {
+                  count = BlocProvider.of<StoreCountCubit>(context).count;
+                  int score = BlocProvider.of<StoreCountCubit>(context).score;
+
+                  if(count < score){
+
+                      count++;
+                      setState(() {
+                        BlocProvider.of<StoreCountCubit>(context).count = count;
+                        ++BlocProvider.of<StoreCountCubit>(context).totalCounter;
+                      });
+                }
+
+                else{
+                  
+                  count = 0;
+                  BlocProvider.of<StoreCountCubit>(context).count = count;
+                  
+                  setState(() {
+                    BlocProvider.of<StoreCountCubit>(context).numberOfCounter++;
+                    
+                    
+                  });
+                  
+                }
+                },
+                count: count,
+                currentColor: curentColor,),
         
         
             
@@ -45,13 +75,14 @@ class _CountPageBodyState extends State<CountPageBody> {
                 height: 40,
               ),
         
-              Text("مرات التكرار : 0", 
+              Text("مرات التكرار : ${BlocProvider.of<StoreCountCubit>(context).numberOfCounter}", 
                   style: TextStyle(
                     color: curentColor,
                     fontSize: 24
                   ),),
-        
-                  Text("المجموع : 0", 
+
+                
+                  Text("المجموع : ${BlocProvider.of<StoreCountCubit>(context).totalCounter}", 
                   style: TextStyle(
                     color: curentColor,
                     fontSize: 24
