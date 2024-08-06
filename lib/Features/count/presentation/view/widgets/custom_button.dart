@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:sub7a/core/utils/colors.dart';
+
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
-    super.key, required this.score,
+    super.key, required this.score, required this.currentColor,
   });
 
   final String score;
+  final Color currentColor;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class CustomButton extends StatelessWidget {
       onPressed: (){}, 
       child: Text(score, 
       style: TextStyle(
-        color: red
+        color: currentColor
       ),));
   }
 }

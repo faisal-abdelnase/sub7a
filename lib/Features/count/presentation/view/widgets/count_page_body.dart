@@ -20,7 +20,7 @@ class _CountPageBodyState extends State<CountPageBody> {
       children: [
         Column(
           children: [
-            const ContanerForScore(),
+            ContanerForScore(currentColor:curentColor ,),
         
             const SizedBox(
                 height: 40,
@@ -29,14 +29,14 @@ class _CountPageBodyState extends State<CountPageBody> {
         
             Text("الاستغفار", 
             style: TextStyle(
-              color: red,
+              color: curentColor,
               fontSize: 32
             ),),
         
         
         
         
-              const CustomCircularPercentIndicator(),
+              CustomCircularPercentIndicator(currentColor: curentColor,),
         
         
             
@@ -47,13 +47,13 @@ class _CountPageBodyState extends State<CountPageBody> {
         
               Text("مرات التكرار : 0", 
                   style: TextStyle(
-                    color: red,
+                    color: curentColor,
                     fontSize: 24
                   ),),
         
                   Text("المجموع : 0", 
                   style: TextStyle(
-                    color: red,
+                    color: curentColor,
                     fontSize: 24
                   ),),
             

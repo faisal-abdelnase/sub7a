@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:sub7a/core/utils/colors.dart';
+
 
 class CustomIcon extends StatelessWidget {
   const CustomIcon({
-    super.key, required this.iconData,
+    super.key, required this.iconData, required this.currentColor,
   });
 
   final IconData iconData;
+  final Color currentColor;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class CustomIcon extends StatelessWidget {
           borderRadius: BorderRadius.circular(40)
         ),
         child: Icon(iconData,
-        color: red,
+        color: currentColor,
         size: 20,
         ),
       ),
