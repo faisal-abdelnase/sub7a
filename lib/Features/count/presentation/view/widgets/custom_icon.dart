@@ -3,30 +3,20 @@ import 'package:flutter/material.dart';
 
 class CustomIcon extends StatelessWidget {
   const CustomIcon({
-    super.key, required this.iconData, required this.currentColor,
+    super.key, required this.iconData,  this.onPressed,
   });
 
   final IconData iconData;
-  final Color currentColor;
+
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        
-      },
-      child: Container(
-        height: 20,
-        width: 20,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(40)
-        ),
-        child: Icon(iconData,
-        color: currentColor,
-        size: 20,
-        ),
-      ),
+    return IconButton(
+      onPressed: onPressed,
+    icon: Icon(iconData,
+    color: Colors.white,
+    size: 20,)
     );
   }
 }

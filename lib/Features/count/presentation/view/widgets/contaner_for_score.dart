@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:sub7a/Features/count/presentation/manager/cubit/store_count_cubit.dart';
 import 'package:sub7a/Features/count/presentation/view/widgets/custom_button.dart';
 import 'package:sub7a/Features/count/presentation/view/widgets/custom_icon.dart';
 
 
-class ContanerForScore extends StatelessWidget {
+class ContanerForScore extends StatefulWidget {
   const ContanerForScore({
     super.key, required this.currentColor,
   });
@@ -11,12 +13,19 @@ class ContanerForScore extends StatelessWidget {
   final Color currentColor;
 
   @override
+  State<ContanerForScore> createState() => _ContanerForScoreState();
+}
+
+class _ContanerForScoreState extends State<ContanerForScore> {
+
+  int score = 33;
+  @override
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
       height: 200,
       decoration: BoxDecoration(
-        color: currentColor
+        color: widget.currentColor
       ),
       child:  Column(
         children: [
@@ -34,14 +43,24 @@ class ContanerForScore extends StatelessWidget {
             Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              CustomIcon(iconData: Icons.add, currentColor: currentColor,),
+              CustomIcon(
+                iconData: Icons.add_circle, 
+                onPressed: () {
+                  score++;
+                  print('------------------------$score--------------');
+                  setState(() {
+                    BlocProvider.of<StoreCountCubit>(context).score = score;
+                    BlocProvider.of<StoreCountCubit>(context).count = 0;
+                  });
+                },
+                ),
     
               const SizedBox(
                 width: 15,
               ),
     
-              const Text("33", 
-              style: TextStyle(
+              Text(score.toString(), 
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 24
               ),),
@@ -50,7 +69,15 @@ class ContanerForScore extends StatelessWidget {
                 width: 15,
               ),
     
-              CustomIcon(iconData: Icons.remove, currentColor: currentColor,),
+              CustomIcon(
+                iconData: Icons.remove_circle,
+                onPressed: () {
+                  score--;
+                  setState(() {
+                    BlocProvider.of<StoreCountCubit>(context).score = score;
+                    BlocProvider.of<StoreCountCubit>(context).count = 0;
+                  });
+                },),
             ],
           ),
     
@@ -61,11 +88,11 @@ class ContanerForScore extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              CustomButton(score: "1000+", currentColor: currentColor,),
-              CustomButton(score: "100+", currentColor: currentColor,),
-              CustomButton(score: "100", currentColor: currentColor,),
-              CustomButton(score: "33", currentColor: currentColor,),
-              CustomButton(score: "0", currentColor: currentColor,),
+              CustomButton(score: "1000", currentColor: widget.currentColor,),
+              CustomButton(score: "500", currentColor: widget.currentColor,),
+              CustomButton(score: "100", currentColor: widget.currentColor,),
+              CustomButton(score: "33", currentColor: widget.currentColor,),
+              CustomButton(score: "0", currentColor: widget.currentColor,),
             ],
           )
         ],
