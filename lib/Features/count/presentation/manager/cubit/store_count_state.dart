@@ -4,5 +4,3 @@ part of 'store_count_cubit.dart';
 sealed class StoreCountState {}
 
 final class StoreCountInitial extends StoreCountState {}
-final class StoreCountSucsess extends StoreCountState {}
-final class StoreCountFailler extends StoreCountState {}

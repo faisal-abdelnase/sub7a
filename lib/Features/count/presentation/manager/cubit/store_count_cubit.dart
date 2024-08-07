@@ -27,4 +27,35 @@ class StoreCountCubit extends Cubit<StoreCountState> {
 
   return prefsColor.getInt("color") ?? red.value;
   }
+
+
+  saveTotalCountData(int totalCount) async{
+    SharedPreferences prefsTotalCount = await SharedPreferences.getInstance();
+    prefsTotalCount.setInt("totalCount", totalCount);
+  }
+
+
+  Future<int> getTotalCount() async{
+    SharedPreferences prefsTotalCount = await SharedPreferences.getInstance();
+    return prefsTotalCount.getInt("totalCount") ?? 0;
+  }
+
+
+
+  saveNumberOfCounterData(int numberOfCounter) async{
+
+    SharedPreferences prefsNumberOfCounter = await SharedPreferences.getInstance();
+    prefsNumberOfCounter.setInt("numberOfCounter", numberOfCounter);
+  }
+
+
+  Future<int> getNumberOfCounter() async{
+    SharedPreferences prefsNumberOfCounter = await SharedPreferences.getInstance();
+    return prefsNumberOfCounter.getInt("numberOfCounter") ?? 0;
+  }
+
+
+
+
+
 }

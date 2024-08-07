@@ -14,7 +14,7 @@ class CountPage extends StatefulWidget {
 class _CountPageState extends State<CountPage> {
   Color curentColor = red;
   @override
-  
+
   void initState() {
     // TODO: implement initState
     super.initState();
@@ -52,8 +52,7 @@ class _CountPageState extends State<CountPage> {
             child: Align(
               alignment: Alignment.bottomLeft,
               child: FloatingActionButton(
-                backgroundColor:
-                    BlocProvider.of<StoreCountCubit>(context).currentColor,
+                backgroundColor: curentColor,
                 onPressed: () {
                   BlocProvider.of<StoreCountCubit>(context).totalCounter = 0;
                   BlocProvider.of<StoreCountCubit>(context).numberOfCounter = 0;

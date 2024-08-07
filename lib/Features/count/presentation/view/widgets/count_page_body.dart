@@ -16,12 +16,32 @@ class _CountPageBodyState extends State<CountPageBody> {
   Color curentColor = red;
   int count = 0;
 
+  int totalCount = 0;
+  int numberOfCounter = 0;
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    
+
+    getTotalCount();
+    getNumberOfCounter();
     getColorData();
+  }
+
+
+  void getTotalCount() async{
+    
+    setState(() async {
+      totalCount = await BlocProvider.of<StoreCountCubit>(context).getTotalCount();
+    });
+  }
+
+  void getNumberOfCounter() async{
+    
+    setState(() async {
+      numberOfCounter = await BlocProvider.of<StoreCountCubit>(context).getNumberOfCounter();
+    });
   }
 
 
@@ -59,8 +79,13 @@ class _CountPageBodyState extends State<CountPageBody> {
                       count++;
                       setState(() {
                         BlocProvider.of<StoreCountCubit>(context).count = count;
-                        ++BlocProvider.of<StoreCountCubit>(context)
-                            .totalCounter;
+                        // ++BlocProvider.of<StoreCountCubit>(context)
+                        //     .totalCounter;
+
+                        totalCount++;
+
+                        BlocProvider.of<StoreCountCubit>(context).saveTotalCountData(totalCount);
+
                       });
                     } else {
                       count = 0;
@@ -69,11 +94,15 @@ class _CountPageBodyState extends State<CountPageBody> {
                       setState(() {
                         if (BlocProvider.of<StoreCountCubit>(context).score ==
                             0) {
-                          BlocProvider.of<StoreCountCubit>(context)
-                              .numberOfCounter;
+                          numberOfCounter;
                         } else {
-                          BlocProvider.of<StoreCountCubit>(context)
-                              .numberOfCounter++;
+                          // BlocProvider.of<StoreCountCubit>(context)
+                          //     .numberOfCounter++;
+
+                          numberOfCounter++;
+
+                          BlocProvider.of<StoreCountCubit>(context).saveNumberOfCounterData(numberOfCounter);
+
                         }
                       });
                     }
@@ -85,11 +114,11 @@ class _CountPageBodyState extends State<CountPageBody> {
                   height: 40,
                 ),
                 Text(
-                  "مرات التكرار : ${BlocProvider.of<StoreCountCubit>(context).numberOfCounter}",
+                  "مرات التكرار : $numberOfCounter",
                   style: TextStyle(color: curentColor, fontSize: 24),
                 ),
                 Text(
-                  "المجموع : ${BlocProvider.of<StoreCountCubit>(context).totalCounter}",
+                  "المجموع : $totalCount",
                   style: TextStyle(color: curentColor, fontSize: 24),
                 ),
               ],
