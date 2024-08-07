@@ -14,6 +14,7 @@ class CountPage extends StatefulWidget {
 
 class _CountPageState extends State<CountPage> {
   Color curentColor = red;
+  bool isActive = false;
   @override
 
   void initState() {
@@ -32,6 +33,7 @@ class _CountPageState extends State<CountPage> {
   });
 }
 
+  
 
   @override
   Widget build(BuildContext context) {
@@ -42,11 +44,17 @@ class _CountPageState extends State<CountPage> {
             elevation: 0,
             backgroundColor: curentColor,
             leading: IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.color_lens,
+                onPressed: () {
+                  isActive = !isActive;
+                  setState(() {
+                    
+                  });
+                },
+                icon: Icon(
+                  isActive? Icons.color_lens : Icons.color_lens_outlined,
                   color: Colors.white,
-                )),
+                )
+                ),
           ),
           floatingActionButton: Padding(
             padding: const EdgeInsets.only(left: 24),
@@ -72,7 +80,7 @@ class _CountPageState extends State<CountPage> {
               ),
             ),
           ),
-          body: const CountPageBody(),
+          body: CountPageBody(isActive: isActive,),
         );
       },
     );

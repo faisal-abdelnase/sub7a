@@ -6,8 +6,11 @@ import 'package:sub7a/Features/count/presentation/view/widgets/custom_circular_p
 import 'package:sub7a/Features/loading/presentation/view/loading_page.dart';
 import 'package:sub7a/core/utils/colors.dart';
 
+// ignore: must_be_immutable
 class CountPageBody extends StatefulWidget {
-  const CountPageBody({super.key});
+    CountPageBody({super.key, this.isActive = false});
+
+    bool isActive;
 
   @override
   State<CountPageBody> createState() => _CountPageBodyState();
@@ -120,50 +123,53 @@ class _CountPageBodyState extends State<CountPageBody> {
               ],
             ),
             const Spacer(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Radio(
-                    fillColor: WidgetStateColor.resolveWith((states) => red),
-                    value: red,
-                    groupValue: curentColor,
-                    onChanged: (value) {
-                      curentColor = value!;
-                      setState(() {
-                        Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context)=> const LoadingPage()));
-                        BlocProvider.of<StoreCountCubit>(context).saveColorData(curentColor.value);
-                      });
-                    }),
-
-
-                Radio(
-                    fillColor: WidgetStateColor.resolveWith((states) => black),
-                    value: black,
-                    groupValue: curentColor,
-                    onChanged: (value) {
-                      curentColor = value!;
-
-                      setState(() {
-                        Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context)=> const LoadingPage()));
-                        BlocProvider.of<StoreCountCubit>(context).saveColorData(curentColor.value);
-                      });
-                    }),
-                Radio(
-                    fillColor: WidgetStateColor.resolveWith((states) => move),
-                    value: move,
-                    groupValue: curentColor,
-                    onChanged: (value) {
-                      curentColor = value!;
-
-                      setState(() {
-                        Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(builder: (context)=> const LoadingPage()));
-                        BlocProvider.of<StoreCountCubit>(context).saveColorData(curentColor.value);
-                      });
-                    }),
-              ],
+            Visibility(
+              visible: widget.isActive,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Radio(
+                      fillColor: WidgetStateColor.resolveWith((states) => red),
+                      value: red,
+                      groupValue: curentColor,
+                      onChanged: (value) {
+                        curentColor = value!;
+                        setState(() {
+                          Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context)=> const LoadingPage()));
+                          BlocProvider.of<StoreCountCubit>(context).saveColorData(curentColor.value);
+                        });
+                      }),
+              
+              
+                  Radio(
+                      fillColor: WidgetStateColor.resolveWith((states) => black),
+                      value: black,
+                      groupValue: curentColor,
+                      onChanged: (value) {
+                        curentColor = value!;
+              
+                        setState(() {
+                          Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context)=> const LoadingPage()));
+                          BlocProvider.of<StoreCountCubit>(context).saveColorData(curentColor.value);
+                        });
+                      }),
+                  Radio(
+                      fillColor: WidgetStateColor.resolveWith((states) => move),
+                      value: move,
+                      groupValue: curentColor,
+                      onChanged: (value) {
+                        curentColor = value!;
+              
+                        setState(() {
+                          Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context)=> const LoadingPage()));
+                          BlocProvider.of<StoreCountCubit>(context).saveColorData(curentColor.value);
+                        });
+                      }),
+                ],
+              ),
             )
           ],
         );
