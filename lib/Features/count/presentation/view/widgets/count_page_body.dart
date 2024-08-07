@@ -58,7 +58,13 @@ class _CountPageBodyState extends State<CountPageBody> {
                   BlocProvider.of<StoreCountCubit>(context).count = count;
                   
                   setState(() {
-                    BlocProvider.of<StoreCountCubit>(context).numberOfCounter++;
+                    if(BlocProvider.of<StoreCountCubit>(context).score == 0){
+                      BlocProvider.of<StoreCountCubit>(context).numberOfCounter;
+                    }
+
+                    else {
+                      BlocProvider.of<StoreCountCubit>(context).numberOfCounter++;
+                    }
                     
                     
                   });

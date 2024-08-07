@@ -19,8 +19,14 @@ class CustomButton extends StatelessWidget {
         return ElevatedButton(
             style: ElevatedButton.styleFrom(minimumSize: const Size(10, 40)),
             onPressed: () {
-              BlocProvider.of<StoreCountCubit>(context).score = int.parse(score);
+              if(int.parse(score) == 0){
+                BlocProvider.of<StoreCountCubit>(context).score = 33;
+                BlocProvider.of<StoreCountCubit>(context).count = 0;
+              }
+              else{
+                BlocProvider.of<StoreCountCubit>(context).score = int.parse(score);
               BlocProvider.of<StoreCountCubit>(context).count = 0;
+              }
             },
             child: Text(
               score,
