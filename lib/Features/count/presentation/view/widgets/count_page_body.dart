@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sub7a/Features/count/presentation/manager/cubit/store_count_cubit.dart';
 import 'package:sub7a/Features/count/presentation/view/widgets/contaner_for_score.dart';
 import 'package:sub7a/Features/count/presentation/view/widgets/custom_circular_percent_indicator.dart';
+import 'package:sub7a/Features/loading/presentation/view/loading_page.dart';
 import 'package:sub7a/core/utils/colors.dart';
 
 class CountPageBody extends StatefulWidget {
@@ -134,6 +135,8 @@ class _CountPageBodyState extends State<CountPageBody> {
                     onChanged: (value) {
                       curentColor = value!;
                       setState(() {
+                        Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context)=> const LoadingPage()));
                         BlocProvider.of<StoreCountCubit>(context).saveColorData(curentColor.value);
                       });
                     }),
@@ -147,6 +150,8 @@ class _CountPageBodyState extends State<CountPageBody> {
                       curentColor = value!;
 
                       setState(() {
+                        Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context)=> const LoadingPage()));
                         BlocProvider.of<StoreCountCubit>(context).saveColorData(curentColor.value);
                       });
                     }),
@@ -158,6 +163,8 @@ class _CountPageBodyState extends State<CountPageBody> {
                       curentColor = value!;
 
                       setState(() {
+                        Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context)=> const LoadingPage()));
                         BlocProvider.of<StoreCountCubit>(context).saveColorData(curentColor.value);
                       });
                     }),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sub7a/Features/count/presentation/manager/cubit/store_count_cubit.dart';
 import 'package:sub7a/Features/count/presentation/view/widgets/count_page_body.dart';
+import 'package:sub7a/Features/loading/presentation/view/loading_page.dart';
 import 'package:sub7a/core/utils/colors.dart';
 
 class CountPage extends StatefulWidget {
@@ -54,8 +55,11 @@ class _CountPageState extends State<CountPage> {
               child: FloatingActionButton(
                 backgroundColor: curentColor,
                 onPressed: () {
-                  BlocProvider.of<StoreCountCubit>(context).totalCounter = 0;
-                  BlocProvider.of<StoreCountCubit>(context).numberOfCounter = 0;
+
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(builder: (context)=> const LoadingPage()));
+                  BlocProvider.of<StoreCountCubit>(context).saveTotalCountData(0);
+                  BlocProvider.of<StoreCountCubit>(context).saveNumberOfCounterData(0);
                   BlocProvider.of<StoreCountCubit>(context).count = 0;
                   setState(() {
                     

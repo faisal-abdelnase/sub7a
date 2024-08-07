@@ -12,8 +12,7 @@ class StoreCountCubit extends Cubit<StoreCountState> {
   Color currentColor = red;
   int score = 33;
   int count = 0;
-  int totalCounter = 0;
-  int numberOfCounter = 0;
+
 
   saveColorData(int color) async{
 
